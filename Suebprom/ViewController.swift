@@ -7,18 +7,43 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseInstanceID
+import FirebaseMessaging
 
 class ViewController: UIViewController {
 
+    
+    var ref:FIRMessagingMessageInfo?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        //let xxx = MessageLog()
+        
+
+        let token = FIRInstanceID.instanceID().token()
+        print("Token key is: \(token!)")
+        
+        
+        DispatchQueue.main.async
+        {
+            let sssss = FIRMessagingRemoteMessage.self
+        
+        print("Value is : \(sssss)")
+            //print(xxx.Message_log)
+            
+            //ref = FIRMessaging.messaging().
+                print("XXXxxxXXXxxxXXX")
+        }
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func didGotoLog(_ sender: Any) {
+        
+        performSegue(withIdentifier: "gotolog", sender: nil)
     }
+    
 
 
 }
