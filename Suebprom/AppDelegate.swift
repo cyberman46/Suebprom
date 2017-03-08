@@ -208,10 +208,28 @@ extension AppDelegate : FIRMessagingDelegate {
     func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
         
         let state: UIApplicationState = UIApplication.shared.applicationState
+        let descriptions: [AnyHashable: Any] = remoteMessage.appData
+
+            print(descriptions[AnyHashable("notification")]!)
+
         
         if state == .background {
             print("///////")
             print("Data : \(remoteMessage.appData)")
+            
+            var dict: [AnyHashable: Any]
+            
+            dict = descriptions[AnyHashable("notification")]! as! [AnyHashable : Any]
+            print("/////// Message ///")
+            let aaa: String = dict["body"]! as! String
+            print(aaa)
+            let msg = MessageLog()
+            
+            let Val:String = msg.ake(dd: aaa)
+
+            
+            print("Save Message : \(Val)")
+            
             print("Background")
             
         }
@@ -219,10 +237,7 @@ extension AppDelegate : FIRMessagingDelegate {
             
             print("///////")
 
-            let descriptions: [AnyHashable: Any] = remoteMessage.appData
-
-            print(descriptions[AnyHashable("notification")]!)
-          
+                      
             var dict: [AnyHashable: Any]
             
             dict = descriptions[AnyHashable("notification")]! as! [AnyHashable : Any]
